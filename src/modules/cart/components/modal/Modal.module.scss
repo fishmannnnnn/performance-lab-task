@@ -1,0 +1,73 @@
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+}
+
+.modal {
+	display: flex;
+	flex-direction: column;
+
+	position: fixed;
+	width: 512px;
+	height: calc(100% - 40px);
+	border-radius: 24px;
+	right: 20px;
+	top: 50%;
+	background: #f0efef;
+	box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+	z-index: 1010;
+	padding: 30px;
+	transform: translate(100%, -50%);
+	animation: slideIn 0.5s ease-out forwards;
+
+	.modalCart {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: sticky;
+		top: 0;
+		left: 0;
+
+		flex-shrink: 0;
+		padding-bottom: 20px;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 32px;
+		font-weight: 300;
+	}
+
+	.closeButton {
+		cursor: pointer;
+	}
+}
+
+.closing {
+	animation: slideOut 0.5s ease-in forwards;
+}
+
+@keyframes slideIn {
+	0% {
+		transform: translate(100%, -50%);
+	}
+	100% {
+		transform: translate(0, -50%);
+	}
+}
+
+@keyframes slideOut {
+	0% {
+		transform: translate(0, -50%);
+	}
+	100% {
+		transform: translate(100%, -50%);
+	}
+}
