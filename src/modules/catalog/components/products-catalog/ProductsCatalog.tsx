@@ -1,11 +1,11 @@
 import { Pagination } from "antd";
 import clsx from "clsx";
-import { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
+import useUrlSync from "@/modules/catalog/hooks/useUrlSync";
 import { Loader } from "@/shared/ui/loader/Loader";
 
-import { fetchByCategory, setPage } from "../../store/catalogSlice";
+import { setPage } from "../../store/catalogSlice";
 import { ProductCard } from "../product-card/ProductCard";
 import styles from "./ProductsCatalog.module.scss";
 
@@ -19,14 +19,11 @@ export const ProductsCatalog = ({
 	category,
 }: ProductsCatalogProps) => {
 	const dispatch = useAppDispatch();
-	const { items, loading, currentPage, totalCount, sortBy, sortOrder } =
-		useAppSelector(state => state.catalog);
+	const { items, loading, currentPage, totalCount } = useAppSelector(
+		state => state.catalog,
+	);
 
-	useEffect(() => {
-		dispatch(
-			fetchByCategory({ category, page: currentPage, sortBy, sortOrder }),
-		);
-	}, [category, currentPage, sortBy, sortOrder, dispatch]);
+	useUrlSync({ category });
 
 	const handlePageChange = (newPage: number) => {
 		dispatch(setPage(newPage));

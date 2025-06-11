@@ -7,7 +7,6 @@ import {
 } from "@reduxjs/toolkit";
 
 interface CatalogState {
-	category: string;
 	items: CatalogItem[];
 	loading: boolean;
 	currentCategory: string | null;
@@ -20,7 +19,6 @@ interface CatalogState {
 type SortOrder = "asc" | "desc";
 
 const initialState: CatalogState = {
-	category: "",
 	items: [],
 	loading: false,
 	currentCategory: "",
@@ -65,8 +63,11 @@ const catalogSlice = createSlice({
 			state.currentPage = action.payload;
 		},
 		setCategory: (state, action: PayloadAction<string>) => {
-			state.currentCategory = action.payload;
-			state.currentPage = 1;
+			const newCategory = action.payload;
+			if (state.currentCategory !== newCategory) {
+				state.currentCategory = newCategory;
+				state.currentPage = 1;
+			}
 		},
 		setSort: (
 			state,

@@ -1,11 +1,10 @@
 import { Select } from "antd";
 import clsx from "clsx";
-import { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { showStoreSortValue } from "@/shared/utils/showStoreSortValue";
 
-import { fetchByCategory, setSort } from "../../store/catalogSlice";
+import { setSort } from "../../store/catalogSlice";
 import styles from "./Sort.module.scss";
 
 interface SortProps {
@@ -20,9 +19,7 @@ const sortOptions = [
 ];
 
 export const Sort = ({ className }: SortProps) => {
-	const { sortBy, sortOrder, currentCategory, currentPage } = useAppSelector(
-		state => state.catalog,
-	);
+	const { sortBy, sortOrder } = useAppSelector(state => state.catalog);
 	const dispatch = useAppDispatch();
 
 	function handleChange(value: string) {
@@ -31,19 +28,6 @@ export const Sort = ({ className }: SortProps) => {
 			setSort({ sortBy: sortby, sortOrder: sortorder as "asc" | "desc" }),
 		);
 	}
-
-	useEffect(() => {
-		if (currentCategory) {
-			dispatch(
-				fetchByCategory({
-					category: currentCategory,
-					page: currentPage,
-					sortBy,
-					sortOrder,
-				}),
-			);
-		}
-	}, [sortBy, sortOrder, currentCategory, currentPage, dispatch]);
 
 	return (
 		<div className={clsx(styles.Sort, className)}>

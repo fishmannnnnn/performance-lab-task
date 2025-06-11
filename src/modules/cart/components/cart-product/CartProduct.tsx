@@ -23,7 +23,7 @@ export const CartProduct = ({ className, product }: CartProductProps) => {
 			dispatch(changeQuantity({ id: product.id, quantity: value }));
 		}
 	}
-    
+
 	return (
 		<div className={clsx(styles.CartProduct, className)}>
 			<div className={styles.imgContainer}>
