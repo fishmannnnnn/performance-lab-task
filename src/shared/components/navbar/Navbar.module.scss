@@ -39,7 +39,11 @@
 		max-width: calc(100% - 40px);
 	}
 }
-
+body[class='no-scroll']{
+    .navbar{
+        transform: translateX(calc(-50% - 10px));
+    }
+}
 .cartEmpty {
 	position: absolute;
 	top: 0;
