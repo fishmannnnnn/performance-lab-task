@@ -70,7 +70,7 @@ export const { setShowCart, addToCart, removeFromCart, changeQuantity } =
 
 export const selectCartItems = (state: RootState) => state.cart.cartItems;
 export const selectCartItemById = createSelector(
-	[selectCartItems, (state: RootState, id: number) => id],
+	[selectCartItems, (_state: RootState, id: number) => id],
 	(items, id) => items[id],
 );
 
