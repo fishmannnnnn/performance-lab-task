@@ -10,9 +10,10 @@ export default function AntdThemeProvider({
 		<ConfigProvider
 			theme={{
 				components: {
-					// Dropdown: {
-					// 	colorPrimary: "rgb(61, 61, 61)",
-					// },
+					Button: {
+						colorPrimary: "rgb(42, 149, 250)",
+                        colorPrimaryHover: "rgba(69, 163, 250, 0.69)",
+					},
 				},
 			}}
 		>
