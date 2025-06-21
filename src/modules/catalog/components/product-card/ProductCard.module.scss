@@ -1,0 +1,43 @@
+.ProductCard {
+	display: grid;
+	gap: 12px;
+	position: relative;
+	background: white;
+	padding: 10px;
+	border-radius: 16px;
+	// max-height: 400px;
+	width: 100%;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+
+	img {
+		height: 100%;
+		width: auto;
+		object-fit: cover;
+	}
+
+	.title {
+		font-size: 16px;
+		text-transform: capitalize;
+		font-weight: 600;
+
+		-webkit-line-clamp: 2;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.price {
+		font-size: 14px;
+		font-weight: 600;
+		color: rgba(0, 0, 0, 0.45);
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.ProductCard {
+		img {
+			max-height: 200px;
+		}
+	}
+}

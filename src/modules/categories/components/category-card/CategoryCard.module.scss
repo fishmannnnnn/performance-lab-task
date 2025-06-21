@@ -1,0 +1,26 @@
+.CategoryCard {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	align-items: center;
+
+	img {
+		border-radius: 16px;
+		object-fit: cover;
+		height: 250px;
+		width: 100%;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+	}
+
+	p {
+		font-size: 18px;
+		text-transform: capitalize;
+		font-weight: 300;
+	}
+
+	@media only screen and (max-width: 768px) {
+		img {
+			height: 200px;
+		}
+	}
+}
